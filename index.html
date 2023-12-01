@@ -115,11 +115,57 @@ function sizeChosei(){
 
 
 var a; 
-var sum1 = 0;
-var sum2 = 0;
-var sum3 = 0;
+var sum1 = 10;
+var sum2 = 10;
+var sum3 = 10;
 
  
+var ctx = document.getElementById("myBarChart");
+  var myBarChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['四角'],
+      datasets: [
+        {
+          label: '赤い四角',
+          data: [sum1],
+          backgroundColor: "rgba(255,0,0,1)"
+        },{
+          label: '青い四角',
+          data: [sum2],
+          backgroundColor: "rgba(0,0,255,1)"
+        },{
+          label: '緑の四角',
+          data: [sum3],
+          backgroundColor: "rgba(4,151,29,1)"
+        },
+      ]
+    },
+    options: {
+        animation: {
+        duration: 0
+    },
+      title: {
+        display: true,
+        text: ''
+      },
+      scales: {
+
+        yAxes: [{
+          ticks: {
+            suggestedMax: 200,
+            suggestedMin: 0,
+            stepSize: 100,
+            callback: function(value, index, values){
+              return  value +  'cm'
+            }
+          }
+        }]
+      },
+    }
+  }); 
+
+
 function clickDisplay() {
 
 if (0 <= videoElem.currentTime && videoElem.currentTime <= 8 ){
@@ -189,7 +235,7 @@ if (sum2 < 0){
 if (sum3 < 0){
   sum3 = 0;
 }
-	
+
 
  //console.log("sum: "+ sum1);
 

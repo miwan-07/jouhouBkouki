@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<title>スライダ</title>
+<title></title>
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"/>
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -58,7 +58,7 @@ p.setumei{
 div.letter{
     position: absolute;
     font-size: 16pt;
-    bottom: 0;
+    bottom: 20%;
     line-height: 0.5em;
 }
 
@@ -69,6 +69,14 @@ div.myBarChart{
     left: 50%;
     width: 50%;
     height: 50%;
+}
+
+
+
+input.d{
+        position: absolute;
+    font-size: 16pt;
+    bottom: 0;
 }
 
 </style>
@@ -95,108 +103,82 @@ function sizeChosei(){
 </head>
 <body>
 
-<video class="movs" id="movs" src='movs/iro8.mp4' autoplay muted></video>
-    <p id="setumei" class="setumei">「同じ色」のメーターを200以上に、「同じ形」のメーターを40以上にしてください。</p>
-
-<input class="slide" id="slide" max="1" min="0" type="range" value="0" step="0.1" />
-<div id="letter" class="letter">
-    <p>スライダの値:<span class="range-value-result">0</span></p>
-    <p>同じ色：<span class="score1"></span>点</p>
-    <p>同じ形：<span class="score2"></span>点</p>
-    <p>同じ動き：<span class="score3"></span>点</p>
-
-</div>
+<video class="movs" id="movs" src='movs/esa.mp4' autoplay muted></video>
+    <p id="setumei" class="setumei">3匹の「四角」がいます。
+      <br>3つの栄養を持つ餌を与えて、「赤い四角」を成長させてください。
+    <br>「赤い四角」：赤色の栄養が多いと、より成長する。赤の栄養が無いと縮む。</p>
+   <input id="return" class="d" type="button"  value="上の餌を1回与える" onclick="clickDisplay()">
 <div class="myBarChart">
 <canvas id="myBarChart"></canvas>
 </div>
     <script>
 
 
-var range;
-
-        $("input[type='range']").on("input", function (y) {
-             range = y.target
-        $(".range-value-result").text(range.value)
-
-            console.log(range.value)
-
-        
-
-
-        })
-
-
 var a; 
 var sum1 = 0;
 var sum2 = 0;
 var sum3 = 0;
-var goukei;
 
-  const countUp = () => {
+ 
+function clickDisplay() {
 
- a = range.value;
+if (0 <= videoElem.currentTime && videoElem.currentTime <= 8 ){
 
-
-if (0 <= videoElem.currentTime && videoElem.currentTime <= 7 ){
-
- sum1 += Number(a)*2 ;
- sum2 += Number(a)*2 ;
- sum3 += Number(a)*2 ;
+ sum1 -= 2 ;
+ sum2 += 1 ;
+ sum3 += 2 ;
 
     
 }
 
- else if (7 < videoElem.currentTime && videoElem.currentTime <= 18) {
- sum1 -= Number(a)*1 ;
- sum2 -= Number(a)*1 ;
- sum3 -= Number(a)*1 ;
+ else if (8 < videoElem.currentTime && videoElem.currentTime <= 16) {
+ sum1 -= 2 ;
+ sum2 += 3 ;
+ sum3 -= 2 ;
 
  }
 
-else if (18 < videoElem.currentTime && videoElem.currentTime <= 30) {
- sum1 += Number(a)*2 ;
- sum2 -= Number(a)*1 ;
- sum3 -= Number(a)*1 ;
+else if (16 < videoElem.currentTime && videoElem.currentTime <= 25) {
+ sum1 += 1 ;
+ sum2 += 2 ;
+ sum3 -= 2 ;
 
  }
 
 
- else if (30 < videoElem.currentTime && videoElem.currentTime <= 42) {
- sum1 -= Number(a)*1 ;
- sum2 -= Number(a)*1 ;
- sum3 += Number(a)*2 ;
+ else if (25 < videoElem.currentTime && videoElem.currentTime <= 32) {
+ sum1 -= 2 ;
+ sum2 += 2 ;
+ sum3 += 1 ;
 
 }
 
 
-else if (42 < videoElem.currentTime && videoElem.currentTime <= 54) {
- sum1 -= Number(a)*1 ;
- sum2 += Number(a)*2 ;
- sum3 += Number(a)*2 ;
+else if (32 < videoElem.currentTime && videoElem.currentTime <= 39) {
+ sum1 += 1 ;
+ sum2 -= 2 ;
+ sum3 += 2 ;
 
 }
 
 
-else if (54 < videoElem.currentTime && videoElem.currentTime <= 66) {
- sum1 += Number(a)*2 ;
- sum2 -= Number(a)*1 ;
- sum3 += Number(a)*2 ;
+else if (39 < videoElem.currentTime && videoElem.currentTime <= 47) {
+ sum1 += 2 ;
+ sum2 -= 2 ;
+ sum3 += 1 ;
 
 }
 
 
-else if (66 < videoElem.currentTime && videoElem.currentTime <= 78) {
- sum1 -= Number(a)*1 ;
- sum2 += Number(a)*2 ;
- sum3 -= Number(a)*1 ;
+else if (47 < videoElem.currentTime && videoElem.currentTime <= 53) {
+ sum1 += 2 ;
+ sum2 += 1 ;
+ sum3 -= 2 ;
 
 }
 
 
-
-
-console.log("a: " +a);
- console.log("sum: "+ sum1);
+ //console.log("sum: "+ sum1);
 
 $(".score1").text(String(sum1)) //点数
 $(".score2").text(String(sum2)) //点数
@@ -205,18 +187,25 @@ $(".score3").text(String(sum3)) //点数
 
 
 
-
 var ctx = document.getElementById("myBarChart");
   var myBarChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['同じ色','同じ形','同じ動き'],
+      labels: ['四角'],
       datasets: [
         {
-          label: '',
-          data: [sum1, sum2, sum3],
-          backgroundColor: "rgba(219,39,91,0.5)"
-        }
+          label: '赤い四角',
+          data: [sum1],
+          backgroundColor: "rgba(255,0,0,1)"
+        },{
+          label: '青い四角',
+          data: [sum2],
+          backgroundColor: "rgba(0,0,255,1)"
+        },{
+          label: '緑の四角',
+          data: [sum3],
+          backgroundColor: "rgba(4,151,29,1)"
+        },
       ]
     },
     options: {
@@ -232,10 +221,10 @@ var ctx = document.getElementById("myBarChart");
         yAxes: [{
           ticks: {
             suggestedMax: 200,
-            suggestedMin: -200,
-            stepSize: 50,
+            suggestedMin: 0,
+            stepSize: 100,
             callback: function(value, index, values){
-              return  value +  '点'
+              return  value +  'cm'
             }
           }
         }]
@@ -245,14 +234,12 @@ var ctx = document.getElementById("myBarChart");
 
 
 
-  }
+
+}
 
 
 
 
-
-
-setInterval(countUp, 100);
 
 
 

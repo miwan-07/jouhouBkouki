@@ -18,14 +18,6 @@ html,body{
 }
 
 
-.movs{
-    
-    position: relative;
-    left: 0;
-    top: 0px;
-    width: 50%;
-}
-
 
 
 .hako{
@@ -33,13 +25,6 @@ html,body{
    display: flex;
   left: 0;
   width: 100%;
-
-}
-
-img{
-  width: 10%;
-  height: 10%;
-
 
 }
 
@@ -52,27 +37,40 @@ p.setumei{
 
 
 .hako2{
-   position: relative;
+   position: absolute;
    display: flex;
-  justify-content: center;
+   height: 100%;
+}
 
+.movs{
+    position: relative;
+    width: 50%;
 }
 
 
+.hako3{
+}
+
+
+img{
+  position: relative;
+  width: 100%;
+}
 
 
 .myBarChart{
-    width: 50%;
+  position: relative;
+    width: 90%;
 }
 
 
 
 input.d{
-        position: absolute;
-        left: 0;
-    font-size: 16pt;
-    bottom: 0;
+    position: relative;
+    font-size: 40pt;
+    width: 30%;
 }
+
 
 </style>
 <script>
@@ -97,21 +95,19 @@ function sizeChosei(){
 </script>
 </head>
 <body>
-<div class = "hako">
-<p id="setumei" class="setumei">犬の「体の大きさ」と「毛の長さ」が、与えるエサによって変わります。
-      <br>「体の大きさ」に関するエサ２種、「毛の長さ」に関するエサ２種。
-    <br>どの組み合わせのエサを与えるか、タイミングを考えてボタンを押してください。</p>
-    <img class = "img" id ="img" src='movs/nazo.JPG'>
-</div>
 
 <div class="hako2">
 <video class="movs" id="movs" src='movs/esa3.mp4' autoplay muted></video>
-<span  class="myBarChart">
-<canvas id="myBarChart"></canvas>
-</span>
+<input id="return" class="d" type="button"  value="▶" onclick="clickDisplay()">
+<div class="hako3">
+ <img class = "img" id ="img" src='movs/nazo.JPG'>
+ <div  class="myBarChart">
+  <canvas id="myBarChart"></canvas>
+ </div>
+</div>
 </div>
     
-   <input id="return" class="d" type="button"  value="上の餌を1回与える" onclick="clickDisplay()">
+   
 
     <script>
 

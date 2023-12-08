@@ -20,14 +20,6 @@ html,body{
 
 
 
-.hako{
-   position: relative;
-   display: flex;
-  left: 0;
-  width: 100%;
-
-}
-
 
 
 p.setumei{
@@ -42,37 +34,48 @@ p.setumei{
    height: 100%;
 }
 
+.hako4{
+position: ;
+width: 50%;
+}
+
 .movs{
+    position: absolute;
+    top: 50px;
+    left: 0;
+    height: 400px;
+}
+
+
+.d{
+    font-size: 50px;
     position: relative;
-    width: 50%;
+    width: 500px;
+    height: 500px;
 }
 
 
 .hako3{
+  position: relative;
 }
 
 
-img{
+.img{
   position: relative;
   width: 100%;
+  
 }
 
 
-.myBarChart{
+.hako5{
   position: relative;
-    width: 90%;
 }
 
 
-
-input.d{
-    position: relative;
-    font-size: 40pt;
-    width: 30%;
-}
 
 
 </style>
+
 <script>
 
 var videoElem;
@@ -97,72 +100,35 @@ function sizeChosei(){
 <body>
 
 <div class="hako2">
+<div class="hako4">
+<input class="d" type="button" value="　　　　　　　　▶" onclick="clickDisplay()">
 <video class="movs" id="movs" src='movs/esa3.mp4' autoplay muted></video>
-<input id="return" class="d" type="button"  value="▶" onclick="clickDisplay()">
+
+</div>
 <div class="hako3">
- <img class = "img" id ="img" src='movs/nazo.JPG'>
- <div  class="myBarChart">
-  <canvas id="myBarChart"></canvas>
- </div>
+ <img class = "img" id ="img" src='movs/4.JPG'>
+</div>
+
 </div>
 </div>
-    
+
+<div class="hako5">
+<button onclick="koushin();location.href='http://localhost/futagi/result.html'">結果を見る</button>
+</div>
+
    
 
-    <script>
 
+    <script>
 
 var a; 
 var sum1 = 0;
 var sum2 = 0;
 var sum3 = 0;
 
- 
-var ctx = document.getElementById("myBarChart");
-  var myBarChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['犬'],
-      datasets: [
-        {
-          label: '大きさ',
-          data: [sum1],
-          backgroundColor: "rgba(255,0,0,1)"
-        },{
-          label: '毛の長さ',
-          data: [sum2],
-          backgroundColor: "rgba(0,0,255,1)"
-        }
-        //,{
-          //label: '緑の四角',
-          //data: [sum3],
-          //backgroundColor: "rgba(4,151,29,1)"
-        //},
-      ]
-    },
-    options: {
-        animation: {
-        duration: 0
-    },
-      title: {
-        display: true,
-        text: ''
-      },
-      scales: {
 
-        yAxes: [{
-          ticks: {
-            suggestedMax: 42,
-            suggestedMin: -28,
-            stepSize: 14,
-            callback: function(value, index, values){
-              return  value +  ''
-            }
-          }
-        }]
-      },
-    }
-  }); 
+
+ 
 
 
 function clickDisplay() {
@@ -241,8 +207,8 @@ if(sum1 < -28){
   sum1 = -28
 }
 
-if(42 < sum1){
-  sum1 = 42
+if(28 < sum1){
+  sum1 = 28
 }
 
 if(sum2 < -28){
@@ -259,99 +225,86 @@ if(28 < sum2){
 //document.getElementById("img").src  = "movs/" + String(sum1) + "-" + String(sum2)  + ".png"
 
 
-if (sum1 < -14 ){
-    if(sum2 <-14){
-      document.getElementById("img").src  = "movs/-1-1.JPG";
-    }
-    else if(14 <= sum2){
-      document.getElementById("img").src  = "movs/-11.JPG";
-    }
-    else{
-      document.getElementById("img").src  = "movs/nazo.JPG";
-    }
+
+
+if ( sum1 < -10){
+  
+  document.getElementById("img").src  = "movs/1.JPG";
+  
 }
 
-else if (-14 <= sum1 && sum1 < 14){
-  document.getElementById("img").src  = "movs/nazo.JPG";
+else if (-10 <= sum1 && sum1 < -8){
+  
+  document.getElementById("img").src  = "movs/1.5.JPG";
+  
 }
 
-else if (14 <= sum1 && sum1 <28  ){
-    if(sum2 < -14){
-      document.getElementById("img").src  = "movs/1-1.JPG";
-    }
-    
-    else if(14 <= sum2){
-      document.getElementById("img").src  = "movs/11.JPG";
-    }
-    else{
-      document.getElementById("img").src  = "movs/nazo.JPG";
-    }
+else if (-8 <= sum1 && sum1 < -6){
+  
+  document.getElementById("img").src  = "movs/2.JPG";
+  
 }
 
-
-else if ( 28 <= sum1){
-    if(sum2 < -14){
-      document.getElementById("img").src  = "movs/2-1.JPG";
-    }
-    
-    else if(14 <= sum2){
-      document.getElementById("img").src  = "movs/21.JPG";
-    }
-
-    else{
-      document.getElementById("img").src  = "movs/nazo.JPG";
-    }
+else if (-6 <= sum1 && sum1 < -4){
+  
+  document.getElementById("img").src  = "movs/2.5.JPG";
+  
 }
 
+else if (-4 <= sum1 && sum1 < -2){
+  
+  document.getElementById("img").src  = "movs/3.JPG";
+  
+}
+
+else if (-2 <= sum1 && sum1 < 0){
+ 
+  document.getElementById("img").src  = "movs/3.5.JPG";
+  }
 
 
+else if (0 <= sum1 && sum1 < 2){
+ 
+  document.getElementById("img").src  = "movs/4.JPG";
+  
+}
+
+else if (2 <= sum1 && sum1 < 4){
+ 
+  document.getElementById("img").src  = "movs/4.5.JPG";
+  
+}
+
+else if (4 <= sum1 && sum1 < 6){
+ 
+  document.getElementById("img").src  = "movs/5.JPG";
+  
+}
+
+else if (6 <= sum1 && sum1 < 8){
+ 
+  document.getElementById("img").src  = "movs/5.5.JPG";
+  
+}
+
+else if (8 <= sum1 && sum1 < 10){
+ 
+  document.getElementById("img").src  = "movs/6.JPG";
+  
+}
+
+else if (10 <= sum1 && sum1 < 12){
+ 
+  document.getElementById("img").src  = "movs/6.5.JPG";
+  
+}
+
+else if (12 <= sum1 && sum1 < 14){
+  
+  document.getElementById("img").src  = "movs/7.JPG";
+  }
 
 
-var ctx = document.getElementById("myBarChart");
-  var myBarChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['犬'],
-      datasets: [
-        {
-          label: '大きさ',
-          data: [sum1],
-          backgroundColor: "rgba(255,0,0,1)"
-        },{
-          label: '毛の長さ',
-          data: [sum2],
-          backgroundColor: "rgba(0,0,255,1)"
-        }
-        //,{
-          //label: '緑の四角',
-          //data: [sum3],
-          //backgroundColor: "rgba(4,151,29,1)"
-        //},
-      ]
-    },
-    options: {
-        animation: {
-        duration: 0
-    },
-      title: {
-        display: true,
-        text: ''
-      },
-      scales: {
-
-        yAxes: [{
-          ticks: {
-            suggestedMax: 42,
-            suggestedMin: -28,
-            stepSize: 14,
-            callback: function(value, index, values){
-              return  value +  ''
-            }
-          }
-        }]
-      },
-    }
-  }); 
 
 }
 

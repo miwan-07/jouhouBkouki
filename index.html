@@ -63,6 +63,7 @@ height: 100%;
   overflow: hidden;
   cursor: pointer;
   animation-fill-mode: forwards;
+  z-index: 4;
 }
 
 .img{
@@ -132,7 +133,7 @@ var sum3 = 0;
 function clickDisplay() {
 
 
-document.getElementById("img_wrap").src = "movs/effect8.gif";
+
 
 if (0 <= videoElem.currentTime && videoElem.currentTime <= 8 ){
  sum1 += 1 ;
@@ -212,7 +213,7 @@ if(15 < sum2){
 if(-13 <= sum2 && sum2 <= 14){
 
 
-console.log("movs/" + String(sum2 + 13)  + ".png")
+//console.log("movs/" + String(sum2 + 13)  + ".png")
 document.getElementById("img").src  = "movs/" + String(sum2 + 13)  + ".JPG"
 
 }
@@ -227,23 +228,28 @@ document.getElementById("img").src  = "movs/27.JPG"
 
 
 
+
+document.getElementById("img_wrap").src = "movs/effect8.gif";
+console.log(document.getElementById("img_wrap").src);
 //console.log(sum1);
-//img.style.transform = `scale(sum1)`;
-//document.getElementsByClassName('img')[0].animate(
-  //[
-    //{ width: '160px', height: '160px' },
-    //{ width: '100px', height: '100px' },
-  //],
-  //{
-    //duration: 100,
-    //iterations: Infinity,
-    //direction: 'alternate'
-  //}
-//);
+//console.log(sum2);
 
 }
 
 
+ const img = document.getElementById('img');
+const button = document.getElementById('button');
+  
+
+  
+  
+
+  button.addEventListener('click', function () {
+    let buttonScale = sum1/50 + 1;
+  img.style.transform = `scale(${buttonScale})`;
+  console.log(sum1);
+  console.log(buttonScale);
+  });
 
 
     </script>

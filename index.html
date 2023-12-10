@@ -22,7 +22,7 @@ html,body{
 .hako2{
    position: absolute;
    display: flex;
-   height: 100%;
+   width: 100%;
 }
 
 .hako4{
@@ -48,24 +48,26 @@ width: 50%;
 }
 
 
-.hako3{
-  position: relative;
+.hako6{
+ position: relative;
+
+width: 100%;
+height: 100%;
 }
 
 
-#img{
-  top: 200px;
-  left: 200px;
-  width: 100%;
-overflow: hidden;
-position: relative;
-z-index: 1;
-
+  .img_wrap{
+  position: absolute;
+  border: 1px solid #ddd;
+  width: 70%;
+  overflow: hidden;
+  cursor: pointer;
+  animation-fill-mode: forwards;
 }
 
-
-.hako5{
-  position: relative;
+.img{
+  width: 70%;
+  margin: auto;
 }
 
 
@@ -102,7 +104,8 @@ function sizeChosei(){
 <video class="movs" id="movs" src='movs/esa3.mp4' autoplay muted></video>
 
 </div>
-<div class="hako3">
+<div class="hako6">
+<img id="img_wrap" class="img_wrap">
  <img class = "img" id ="img" src='movs/13.JPG'>
 </div>
 </div>
@@ -127,6 +130,9 @@ var sum3 = 0;
  
 
 function clickDisplay() {
+
+
+document.getElementById("img_wrap").src = "movs/effect2.gif";
 
 if (0 <= videoElem.currentTime && videoElem.currentTime <= 8 ){
  sum1 += 1 ;
@@ -237,19 +243,6 @@ document.getElementById("img").src  = "movs/27.JPG"
 
 }
 
-
-const img = document.getElementById('img');
-const  button= document.getElementById('button');
-
-let buttonScale = 1;
-
-  button.addEventListener('click', function () {
-    buttonScale = sum1/20 + 1;
-    img.style.transform = `scale(${buttonScale})`;
-
-    console.log(sum1);
-  });
- 
 
 
 

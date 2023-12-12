@@ -44,24 +44,16 @@ width: 100%;
   z-index: 4;
 }
 
-.gakubuti{
-  top: 0;
-  position: absolute;
-  width: 100%;
-  left: 0;
-  z-index: 5;
-}
-
 
 .img_wrap{
   width: 30%;
 }
 
 .img{
-  top: 190px;
+  top: 200px;
   position: absolute;
-  width: 25%;
-  left: 34%;
+  width: 23%;
+  left: 35%;
   overflow: hidden;
 }
 
@@ -163,13 +155,7 @@ function sizeChosei(){
 
 
     <script>
-var t = Math.floor(new Date().getTime()/1000)
-//console.log(t);
 
-
-$.get("timeCount2.php", function(bbb){
-  //console.log(bbb);
-  });
 
 
 
@@ -385,7 +371,7 @@ const button2 = document.getElementById('pic2');
   
 
   button.addEventListener('click', function () {
-    let buttonScale = sum1/50 + 1;
+    let buttonScale = sum1/25 + 1;
   img.style.transform = `scale(${buttonScale})`;
   
   console.log(buttonScale);
@@ -395,7 +381,7 @@ const button2 = document.getElementById('pic2');
 
 
   button2.addEventListener('click', function () {
-    let buttonScale2 = sum1/50 + 1;
+    let buttonScale2 = sum1/25 + 1;
   img.style.transform = `scale(${buttonScale2})`;
   
   console.log(buttonScale2);

@@ -15,19 +15,17 @@
 <style type="text/css">
 html,body{
 	margin:0;
-  background-image:url( "movs/haikei.jpg");
+  background-image:url( "movs/haikei3.png");
    background-size: 100%;
    background-repeat: no-repeat;
 }
 
 
-.hon{
-  top: 45%;
-  left: 10%;
-position: absolute;
-width: 10%;
-z-index: 5;
-}
+
+
+
+
+
 
 
 .nuigurumi{
@@ -37,41 +35,93 @@ width: 100%;
 
 
   .img_wrap{
-  top: 50px;
+  top: 140px;
   position: absolute;
   width: 30%;
-  left: 35%;
+  left: 34%;
   overflow: hidden;
   animation-fill-mode: forwards;
   z-index: 4;
 }
 
-.img{
-  top: 50px;
+.gakubuti{
+  top: 0;
   position: absolute;
+  width: 100%;
+  left: 0;
+  z-index: 5;
+}
+
+
+.img_wrap{
   width: 30%;
-  left: 35%;
+}
+
+.img{
+  top: 190px;
+  position: absolute;
+  width: 25%;
+  left: 34%;
   overflow: hidden;
 }
 
-.pic{
+
+.hon{
+  top: 35%;
+position: absolute;
+width: 100%;
+z-index: 5;
+animation-name: anim;
+}
+
+@keyframes anim {
+  0%{
+    transform: translate(0, 0px);
+  }
+  100%{
+    transform: translate(0,60px);
+  }
+}
+
+
+#pic{
   position: absolute;
+left: 5%;
   z-index: 6;
+  animation-name: anim;
 }
 
 
-.d{
+
+#pic2{
   position: absolute;
-  bottom: 0;
-  margin: auto;
+  z-index: 7;
+  top: 200px;
+  left: 10%;
 }
+
+
+
+#kekka{
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  top: 650px;
+  z-index: 8;
+}
+
+#d{
+  right: 0;
+  position: absolute;
+  width: 20%;
+}
+
 
 
 </style>
-
 <script>
 
-
+var videoElem;
 
 onload = function(){
 	sizeChosei();
@@ -79,6 +129,7 @@ onload = function(){
 		sizeChosei();
 	});
 	
+	videoElem = document.getElementById('movs');
 	
 }
 
@@ -91,26 +142,37 @@ function sizeChosei(){
 </head>
 <body>
 
-
-
 <div class="nuigurumi">
+
 <img id="img_wrap" class="img_wrap">
- <img class = "img" id ="img" src='movs/13.JPG'>
+
+ <img class = "img" id ="img" src='movs/4.png'>
+
 </div>
 
 <div class="hon">
-
+<img id="pic2" src="movs/PUSH.png" width="400" height="400" onclick="clickDisplay()">
 <img id="pic" src="movs/big.png" width="400" height="400" onclick="clickDisplay()">
-
 </div>
 
-
-<button  id ="d" onclick="koushin();location.href='http://localhost/futagi/result.html'">結果</button>
+<div id="kekka">
+<img  id ="d" src="movs/kekka3.png" onclick="koushin();location.href='http://localhost/futagi/result.html'">
+</div>
 
    
 
 
     <script>
+var t = Math.floor(new Date().getTime()/1000)
+//console.log(t);
+
+
+$.get("timeCount2.php", function(bbb){
+  //console.log(bbb);
+  });
+
+
+
 
 
 'use strict';
@@ -138,14 +200,18 @@ function picChange() {
 
 
 
+
+
+
 var a; 
 var sum1 = 0;
 var sum2 = 0;
 var sum3 = 0;
 
 
-
+let motoData = new Array();
  
+
 
 function clickDisplay() {
 
@@ -217,56 +283,102 @@ if(15 < sum2){
 
 
 
-if(-13 <= sum2 && sum2 <= 14){
 
 
-//console.log("movs/" + String(sum2 + 13)  + ".png")
-document.getElementById("img").src  = "movs/" + String(sum2 + 13)  + ".JPG"
 
+
+
+
+
+
+//console.log("movs/" + String(sum1) + "-" + String(sum2)  + ".png")
+//document.getElementById("img").src  = "movs/" + String(sum1) + "-" + String(sum2)  + ".png"
+
+
+if (sum2 <= -14 ){
+      document.getElementById("img").src  = "movs/1.png";
+    }
+
+  else if (-13 <= sum2 && sum2 < -10){
+ 
+  document.getElementById("img").src  = "movs/1.png";
 }
-else if(sum2 <= -14){
-document.getElementById("img").src  = "movs/0.JPG"
 
-}
-else if(15 <= sum2){
-document.getElementById("img").src  = "movs/27.JPG"
-
+else if (-10 <= sum2 && sum2 < -6){
+ 
+  document.getElementById("img").src  = "movs/2.png";
 }
 
+else if (-6 <= sum2 && sum2 < -2){
+ 
+  document.getElementById("img").src  = "movs/3.png";
+}
+
+
+else if (-2 <= sum2 && sum2 < 2){
+ 
+  document.getElementById("img").src  = "movs/4.png";
+}
+
+else if (2 <= sum2 && sum2 < 6){
+ 
+  document.getElementById("img").src  = "movs/5.png";
+}
+
+else if (6 <= sum2 && sum2 < 10){
+ 
+  document.getElementById("img").src  = "movs/6.png";
+}
+
+else if (10 <= sum2 && sum2 < 14){
+ 
+  document.getElementById("img").src  = "movs/7.png";
+}
+
+
+
+else if ( 14 <= sum2){
+  
+      document.getElementById("img").src  = "movs/7.png";
+    }
 
 
 
 
-//if(-14 <= sum2 && sum2 <= -5){
 
 
-//console.log("movs/" + String(sum2 + 13)  + ".png")
-//document.getElementById("img").src  = "movs/" + String(sum2 + 13)  + ".JPG"
-
-//}
-//else if(-4 < sum2 <= 5){
-//document.getElementById("img").src  = "movs/0.JPG"
-
-//}
-//else if(6 <= sum2){
-//document.getElementById("img").src  = "movs/27.JPG"
-
-//}
-
-
-
-
-
-document.getElementById("img_wrap").src = "movs/effect16.gif";
+  document.getElementById("img_wrap").src = "movs/effect16.gif";
 //console.log(document.getElementById("img_wrap").src);
 //console.log(sum1);
 //console.log(sum2);
 
+
+
 }
+
+
+
+function koushin(){
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
 
 
  const img = document.getElementById('img');
 const button = document.getElementById('pic');
+const button2 = document.getElementById('pic2');
   
 
   
@@ -276,8 +388,20 @@ const button = document.getElementById('pic');
     let buttonScale = sum1/50 + 1;
   img.style.transform = `scale(${buttonScale})`;
   
-  //console.log(buttonScale);
+  console.log(buttonScale);
+
   });
+
+
+
+  button2.addEventListener('click', function () {
+    let buttonScale2 = sum1/50 + 1;
+  img.style.transform = `scale(${buttonScale2})`;
+  
+  console.log(buttonScale2);
+
+  });
+
 
 
     </script>

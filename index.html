@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<title></title>
+<title>操作方法説明ページ</title>
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"/>
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -10,388 +10,138 @@
 <meta name="description" content="">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 
 <style type="text/css">
+
 html,body{
-	margin:0;
-  background-image:url( "movs/haikei3.png");
-   background-size: 100%;
-   background-repeat: no-repeat;
+	margin: 0;
+  background-color: #000000;
+   height: 100%;
 }
 
+.dodai{
+  display: none;
+}
 
-
-
-
-
-
-
-
-.nuigurumi{
- position: relative;
+#wrap{
 width: 100%;
-}
-
-
-  .img_wrap{
-  top: 140px;
+height: 100%;
   position: absolute;
-  width: 30%;
-  left: 34%;
   overflow: hidden;
-  animation-fill-mode: forwards;
-  z-index: 4;
+  text-align: center;
 }
 
 
-.img_wrap{
-  width: 30%;
-}
-
-.img{
-  top: 200px;
-  position: absolute;
-  width: 23%;
-  left: 35%;
-  overflow: hidden;
-}
-
-
-.hon{
-  top: 35%;
-position: absolute;
-width: 100%;
-z-index: 5;
-animation-name: anim;
-}
-
-@keyframes anim {
-  0%{
-    transform: translate(0, 0px);
-  }
-  100%{
-    transform: translate(0,60px);
-  }
-}
-
-
-#pic{
-  position: absolute;
-left: 5%;
-  z-index: 6;
-  animation-name: anim;
-}
-
-
-
-#pic2{
-  position: absolute;
-  z-index: 7;
-  top: 200px;
-  left: 10%;
-}
-
-
-
-#kekka{
+.bun{
   position: relative;
-  width: 100%;
+  top: 1%;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 24px;
+    font-family:serif;
+    text-shadow: 2px  2px 5px #000000;
+    opacity: 80%;
+}
+
+#bun2{
+  border-bottom:2px solid; #FFF ;
+}
+
+
+#movs{
+  top: 10%;
+  position: relative;
+  width: 60%;
+  z-index: 1;
+
+}
+
+
+
+
+.hako2{
+	position: fixed;
+	z-index: 10;
+	width: 100%;
+  height: 20%;
+  text-align: center;
   bottom: 0;
-  top: 650px;
-  z-index: 8;
 }
 
-#d{
-  right: 0;
-  position: absolute;
-  width: 20%;
+.button{
+   position: relative;
+    width: 250px;
+    /*コレ*/background: transparent;
+    border: 1px solid #FFF;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 18px;
+   
+    font-family:serif;
+    
+     margin: 0.5%;
+     opacity: 80%;
+     transition: all .3s;
 }
 
+.button:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
 
+.button2{
+   position: relative;
+    width: 250px;
+    /*コレ*/background: transparent;
+    border: 1px solid #FFF;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 18px;
+    font-family:serif;
+    margin: 0.5%;
+    transition: all .3s;
+    opacity: 80%;
+}
+
+.button2:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
 
 </style>
 <script>
-
-var videoElem;
-
 onload = function(){
 	sizeChosei();
 	$(window).resize(function(){
 		sizeChosei();
 	});
-	
-	videoElem = document.getElementById('movs');
-	
 }
-
-
 function sizeChosei(){
 	$("html").css({"font-size":(window.innerWidth/100)+"px"});
 }
+
+
+$(window).on("load", function() {
+    $('.dodai').fadeIn(500); 
+});
+
 
 </script>
 </head>
 <body>
 
-<div class="nuigurumi">
-
-<img id="img_wrap" class="img_wrap">
-
- <img class = "img" id ="img" src='movs/4.png'>
-
+<div class="dodai">
+<div class="wrap" id="wrap">
+  <p class="bun" id="bun"><span id="bun2">　　　　　体験を始める前に　　　　　</span></p>
+<video class="movs" id="movs" src="movs/setumei.mp4" webkit-playsinline playsinline autoplay muted controls></video>
 </div>
-
-<div class="hon">
-<img id="pic2" src="movs/PUSH.png" width="400" height="400" onclick="clickDisplay()">
-<img id="pic" src="movs/big.png" width="400" height="400" onclick="clickDisplay()">
+<div id="hako2" class="hako2">
+<input id="button" class="button" type="button"  value="体験装置へ" onclick="location.href='file:///C:/xampp/htdocs/moriagari/game2-2.html'">
+<input id="button2" class="button2" type="button"  value="戻る" onclick="location.href='file:///C:/xampp/htdocs/moriagari/index2.html'">
 </div>
-
-<div id="kekka">
-<img  id ="d" src="movs/kekka3.png" onclick="koushin();location.href='http://localhost/futagi/result.html'">
 </div>
-
-   
-
-
-    <script>
-
-
-
-
-
-
-'use strict';
-
-const pic = ["movs/big.png", "movs/small.png", "movs/long.png", "movs/short.png"];
-
-let count = -1;
-
-picChange(); // 関数を実行
-
-function picChange() {
-
-  count++;
-
-  // カウントが最大になれば配列を初期値に戻すため「0」を指定する
-  if (count == pic.length) count = 0;
-
-  // 画像選択
-  document.getElementById("pic").src = pic[count];
-
-  // 1秒ごとに実行
-  setTimeout("picChange()", 5000);
-
-}
-
-
-
-
-
-
-var a; 
-var sum1 = 0;
-var sum2 = 0;
-var sum3 = 0;
-
-
-let motoData = new Array();
- 
-
-
-function clickDisplay() {
-
-
-
-
-if ( document.getElementById("pic").src == "https://miwan-07.github.io/jouhouBkouki/movs/big.png"){
- sum1 += 1 ;  
- sum2 += 0 ;
-
- console.log(sum1);
-console.log(sum2);
-
-}
-
- else if (document.getElementById("pic").src == "https://miwan-07.github.io/jouhouBkouki/movs/small.png") {
- sum1 -= 1 ;
- sum2 += 0 ;
-
- console.log(sum1);
-console.log(sum2);
-
- }
-
-else if (document.getElementById("pic").src == "https://miwan-07.github.io/jouhouBkouki/movs/long.png") {
- sum1 += 0 ;
- sum2 += 1 ;
-
- console.log(sum1);
-console.log(sum2);
-
- }
-
-
- else if (document.getElementById("pic").src == "https://miwan-07.github.io/jouhouBkouki/movs/short.png") {
- sum1 += 0 ;
- sum2 -= 1 ;
-
- console.log(sum1);
-console.log(sum2);
-
-}
-
-else{
-  console.log(document.getElementById("pic").src);
-  console.log(sum1);
-console.log(sum2);
-}
-
-
-
-
-
-if(sum1 < -15){
-  sum1 = -15
-}
-
-if(15 < sum1){
-  sum1 = 15
-}
-
-if(sum2 < -15){
-  sum2 = -15
-}
-
-if(15 < sum2){
-  sum2 = 15
-}
-
-
-
-
-
-
-
-
-
-
-
-//console.log("movs/" + String(sum1) + "-" + String(sum2)  + ".png")
-//document.getElementById("img").src  = "movs/" + String(sum1) + "-" + String(sum2)  + ".png"
-
-
-if (sum2 <= -14 ){
-      document.getElementById("img").src  = "movs/1.png";
-    }
-
-  else if (-13 <= sum2 && sum2 < -10){
- 
-  document.getElementById("img").src  = "movs/1.png";
-}
-
-else if (-10 <= sum2 && sum2 < -6){
- 
-  document.getElementById("img").src  = "movs/2.png";
-}
-
-else if (-6 <= sum2 && sum2 < -2){
- 
-  document.getElementById("img").src  = "movs/3.png";
-}
-
-
-else if (-2 <= sum2 && sum2 < 2){
- 
-  document.getElementById("img").src  = "movs/4.png";
-}
-
-else if (2 <= sum2 && sum2 < 6){
- 
-  document.getElementById("img").src  = "movs/5.png";
-}
-
-else if (6 <= sum2 && sum2 < 10){
- 
-  document.getElementById("img").src  = "movs/6.png";
-}
-
-else if (10 <= sum2 && sum2 < 14){
- 
-  document.getElementById("img").src  = "movs/7.png";
-}
-
-
-
-else if ( 14 <= sum2){
-  
-      document.getElementById("img").src  = "movs/7.png";
-    }
-
-
-
-
-
-
-  document.getElementById("img_wrap").src = "movs/effect16.gif";
-//console.log(document.getElementById("img_wrap").src);
-//console.log(sum1);
-//console.log(sum2);
-
-
-
-}
-
-
-
-function koushin(){
-
-
-
-
-
-
-
-
-
-}
-
-
-
-
-
-
-
- const img = document.getElementById('img');
-const button = document.getElementById('pic');
-const button2 = document.getElementById('pic2');
-  
-
-  
-  
-
-  button.addEventListener('click', function () {
-    let buttonScale = sum1/25 + 1;
-  img.style.transform = `scale(${buttonScale})`;
-  
-  console.log(buttonScale);
-
-  });
-
-
-
-  button2.addEventListener('click', function () {
-    let buttonScale2 = sum1/25 + 1;
-  img.style.transform = `scale(${buttonScale2})`;
-  
-  console.log(buttonScale2);
-
-  });
-
-
-
-    </script>
-
 
 </body>
 </html>
